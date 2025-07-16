@@ -5,10 +5,17 @@ const cycleSchema = new Schema({
         type: Date,
         required: true
     },
-    portfolios: [{
-        portfolio_name: String,
-        portfolio_files: [String]
-    }]
+    portfolios: {
+        type: [{
+            portfolio_name: String,
+            portfolio_file_details: [{
+                filename: String,
+                path: String,
+                uploadedAt:{type: Date, default: Date.now}
+            } ]
+        }],
+        default:[]
+    }
 },{timestamps:true})
 const addProduct = new Schema({
     product_name: {
